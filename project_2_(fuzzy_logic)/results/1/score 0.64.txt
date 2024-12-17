@@ -1,0 +1,32 @@
+def cylindrical_closure(A1,A2,A3=None):
+    if A3 is not None:
+        D = np.zeros((len(A3),len(A2),len(A1)))
+
+        for k in range(len(A3)):
+            for j in range(len(A2)):
+                for i in range(len(A1)):
+                    D[k,j,i] = min( A1[i], A2[j], A3[k] )
+        
+    else:
+        D = np.zeros( (len(A1), len(A2)) )
+        for i in range(len(A1)):
+            for j in range(len(A2)):
+                D[i,j] = min( A1[i], A2[j] )
+
+    return D
+
+def relation(D,Y,implication_op):
+    R = []
+    
+    # for 3 antecedents
+    if len(D.shape) == 3:
+
+        for y in Y:
+            r = np.zeros_like(D)
+            
+            for k in range(D.shape[0]):
+                for j in range(D.shape[1]):
+                    for i in range(D.shape[2]):
+                        r[k,j,i] = implication_op(D[k,j,i],y)
+            
+            R.append(r)

@@ -1,0 +1,26 @@
+
+
+----------------------------------------
+
+----------------------------------------
+----------------------------------------
+File: GA_styblinski_tang_2_1_1_2_max_termination.csv
+Has Infinite Values: False
+Has NaN Values: True
+Has Blank (Empty) Values: False
+----------------------------------------
+File: GA_styblinski_tang_2_1_1_2_neg_impr_termination.csv
+Has Infinite Values: False
+Has NaN Values: True
+Has Blank (Empty) Values: False
+----------------------------------------
+File: GA_styblinski_tang_2_1_2_1_max_termination.csv
+Has Infinite Values: True
+Has NaN Values: True
+Has Blank (Empty) Values: False
+----------------------------------------
+File: GA_styblinski_tang_2_1_2_1_neg_impr_termination.csv
+Has Infinite Values: True
+Has NaN Values: True
+Has Blank (Empty) Values: False
+----------------------------------------

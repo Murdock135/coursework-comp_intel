@@ -1,0 +1,48 @@
+a = []
+st_dev_1 = 1
+st_dev_2 = 0.35
+
+samples = random.sample(pop_after_selection, 5)
+print(type(population[1]))
+print("samples: ")
+print(samples)
+print()
+print("last parent: ")
+last_parent = samples[-1]
+print(last_parent)
+print('mean')
+mean = np.mean(samples, axis=0)
+print(mean)
+print('direction vectors')
+direction_vectors = [parent-mean for parent in samples]
+print(direction_vectors)
+print('norm of direction vectors')
+norm_direction_vectors = np.array([np.linalg.norm(direction_vector) for direction_vector in direction_vectors])
+norm_direction_vectors = norm_direction_vectors[np.newaxis, :]
+
+print(norm_direction_vectors)
+print("direction cosines: ")
+direction_cosines =  np.array([direction_vector / np.linalg.norm(direction_vector) for direction_vector in direction_vectors])
+print(direction_cosines)
+print('|di|e:')
+di_times_e = (norm_direction_vectors@direction_cosines).flatten()
+# di_times_e = di_times_e.flatten()
+print(type(di_times_e))
+print(di_times_e)
+
+ # calculate orthoganal vector to all direction cosines and its norm
+orthogonal_vector = last_parent - mean
+delta = np.linalg.norm(orthogonal_vector)
+orthonormal_basis = orthogonal_vector/delta
+
+
+new_child_1 = mean + np.random.normal(0, st_dev_1**2) * (norm_direction_vectors@direction_cosines).flatten() + np.random.normal(0 , st_dev_2**2)*delta*orthonormal_basis
+new_child_2 = mean - np.random.normal(0, st_dev_1**2) * (norm_direction_vectors@direction_cosines).flatten() - np.random.normal(0 , st_dev_2**2)*delta*orthonormal_basis
+samples.append(new_child_1)
+samples.append(new_child_2)
+
+print("children: ")
+print(new_child_1 , new_child_2)
+print("samples")
+print(samples)
+print(len(samples))
